@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    #container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <canvas class="pattern" width=1470 height=700></canvas>
+  </div>
+</body>
+<script>
+  const canvas = document.querySelector(".pattern");
+  const ctx = canvas.getContext("2d")
+
+  const xLines = (x, y, width) => {
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    ctx.lineTo(x + width, y + width)
+    ctx.stroke();
+
+    ctx.beginPath()
+    ctx.moveTo(x + width, y)
+    ctx.lineTo(x + width / 2, y + width / 2)
+    ctx.stroke();
+
+    ctx.beginPath()
+    ctx.moveTo(x, y + width / 2)
+    ctx.lineTo(x + width / 2, y)
+    ctx.stroke();
+
+    ctx.beginPath()
+    ctx.moveTo(x + width / 2, y)
+    ctx.lineTo(x + width, y + width / 2)
+    ctx.stroke();
+
+    ctx.beginPath()
+    ctx.moveTo(x + width, y + width / 2)
+    ctx.lineTo(x + width / 2, y + width)
+    ctx.stroke();
+  }
+
+  const pattern = (x, y, width) => {
+    // xLines(x,y,width)
+    //fillSquare
+    ctx.fillStyle = "white"
+
+    ctx.beginPath()
+    ctx.fillRect(x, y, width / 2, width / 2)
+    ctx.fillRect(x + width / 2, y, width / 2, width / 2)
+    ctx.fillRect(x + width / 2, y + width / 2, width / 2, width / 2)
+    ctx.clearRect(x, y + width / 2, width / 2, width / 2)
+    ctx.stroke();
+  }
+
+  const draw = (x, y, maxWidth, minSize) => {
+    pattern(x, y, maxWidth)
+
+    if (maxWidth > minSize) {
+      const newWidth = maxWidth / 2
+      draw(x, y, newWidth, minSize)
+      draw(x + newWidth, y, newWidth, minSize)
+      draw(x + newWidth, y + newWidth, newWidth, minSize)
+    }
+  }
+
+  draw(0, 0, 400, 10)
+</script>
+
+</html>

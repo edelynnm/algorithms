@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Practice</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="700" height="600"></canvas>
+
+
+</body>
+<script>
+  const circle = document.querySelector("#myCanvas");
+  const ctx = circle.getContext("2d")
+
+  ctx.beginPath();
+  ctx.arc(150, 150, 90, - Math.PI / 4, Math.PI, true)
+  ctx.stroke();
+
+
+  ctx.moveTo(60, 150)
+  ctx.lineTo(225, 400);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(278, 150, 90, 0, -(Math.PI * 3/ 4), true)
+  ctx.stroke();
+
+  ctx.moveTo(368, 150)
+  ctx.lineTo(225, 400);
+  ctx.stroke();
+
+</script>
+</html>

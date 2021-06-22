@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    #container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <canvas class="pattern" width=1470 height=700></canvas>
+  </div>
+</body>
+<script>
+  const canvas = document.querySelector(".pattern");
+  const ctx = canvas.getContext("2d")
+  const gradient = ctx.createRadialGradient(75, 50, 15, 90, 60, 500)
+  gradient.addColorStop("0", "white");
+  gradient.addColorStop("0.2", "turquoise");
+  gradient.addColorStop("0.3", "magenta");
+  gradient.addColorStop("0.4", "darkorange");
+  gradient.addColorStop("0.5", "gold");
+  gradient.addColorStop("0.6", "turquoise");
+  gradient.addColorStop("0.85", "deepskyblue");
+  gradient.addColorStop("1.0", "fuchsia");
+
+  const circle = (x, y, r) => {
+    ctx.beginPath()
+    ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+    ctx.stroke();
+  }
+
+  const drawCircles = (gap, r, maxCount, count = 0) => {
+    ctx.beginPath()
+    circle(gap, 0, r)
+    ctx.rotate((2 * Math.PI) / maxCount)
+
+    if (count < maxCount) {
+      return drawCircles(gap, r, maxCount, count + 1)
+    }
+  }
+
+  const increasingCircle = (gap, r, count) => {
+    circle(0, 0, r)
+
+    if (count !== 1) {
+      return increasingCircle(gap, r + gap, count - 1)
+    }
+  }
+
+  ctx.strokeStyle = gradient
+
+  ctx.translate(720, 350)
+
+  drawCircles(30, 30, 10)
+  drawCircles(30, 30, 10)
+  drawCircles(50, 50, 20)
+  drawCircles(120, 10, 150)
+  drawCircles(130, 10, 150)
+  drawCircles(150, 18, 60)
+  drawCircles(250, 100, 200)
+  drawCircles(550, 300, 100)
+
+  increasingCircle(50, 420, 2)
+</script>
+
+</html>

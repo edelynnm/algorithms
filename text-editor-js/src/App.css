@@ -1,0 +1,75 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css";
+
+#main {
+  height: fit-content;
+}
+
+#textTools {
+  display: 'flex';
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  box-shadow: 6px 10px 20px rgba(0, 0, 0, 0.103);
+}
+
+#editor {
+  max-width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 6px 10px 20px rgb(228, 228, 228);
+}
+
+.textArea {
+  white-space: pre-wrap;
+  outline: none;
+  width: 100%;
+  display: inline-block;
+  height: 88vh;
+  /* border: 1px solid red; */
+}
+
+.textAreaContainer {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.content:empty::before {
+  content: attr(placeholder);
+  color: #ccc;
+}
+
+.content:empty:focus::before {
+  content: "";
+}
+
+#textSearch {
+  width: 350px;
+  padding: 5px;
+}
+
+#searchHolder {
+  position: fixed;
+  top: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  visibility: hidden;
+  /* border: 1px solid red; */
+}
+
+#textSearchContainer {
+  max-width: 400px;
+  background-color: #16d4b8;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 6px 10px 20px rgba(0, 0, 0, 0.103);
+
+}
+
+.close {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+#textTools {
+  z-index: 0;
+}

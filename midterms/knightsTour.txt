@@ -1,0 +1,12 @@
+Using predefined 8 possible moves of a knight, my solution utilizes backtracking technique 
+to move the knight to the next square.
+This approach uses the the path that is within the bounds of the matrix, has not yet been visited 
+and has the least available next move.
+
+Choosing the next move with the least available space is the most important part of this algorithm 
+as it helps decrease the time it would take to visit every space. Going to the hard to reach places first (such as the corners), 
+is advantageous than doing it later in the end.
+
+The time complexity for this algorithm is O((N*N)K), where N is the size of the matrix and K is the possible moves of a knight.
+For every move, there are 8 possible position to check and choose from: 1 * 8
+and since the kinght must visit every spot once, then: 8 * (5*5)
